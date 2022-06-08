@@ -1,0 +1,42 @@
+{% extends "api/base.html" %}
+
+{% block content %}
+
+<title> {% block title %} Create your MTU Account {% endblock %} </title>
+
+{% load static %}
+
+
+<div class="container" id="body">
+    <div class="row justify-content-center">
+        <div class="cen col-sm-8 pt-4 pb-4">
+            <h4 class="fw-bold" id="login-msg">CREATE YOUR ACCOUNT</h4>
+            <p>The student number is provided in registrration form.</p>
+                </br>
+            <form action="{% url 'signup' %}" method="POST">
+                {% csrf_token %} 
+                <div class="mb-3">
+                    <label for="username" class="form-label">Student Number</label>
+                    <input type="text" class="form-control" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" name="username" required>
+                    <div class="form-text">Username must be unique.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

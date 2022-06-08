@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
+
+html {
+    height: 100%;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: rgb(64,84,178);
+    background: linear-gradient(140deg, rgba(64,84,178,1) 0%, rgba(155,81,224,1) 100%); 
+    width: 100vw;
+    height: 100vh;
+}
+
+
+#top {
+    height:1.500rem;
+    background-color: rgb(65,88,208);
+    /* background-color: rgba(6,147,227,1); */
+}
+
+.navbar {
+    /* background-color: rgba(252,185,0,1); */
+    background-color: rgb(255,203,112);
+}
+
+.logo {
+    height: 5.75rem !important; 
+    width: 5.75rem;
+}
+
+#mtu {
+    height: 5.75rem !important ;
+    color:rgb(2,3,129);
+}
+
+#body {
+    width: 780px;
+    margin-top: 50px; 
+    padding-bottom: 50px;
+    /* color: rgba(6,147,227,1);; */
+    color:#613d7c; 
+}
+
+.left {
+    background-size: cover;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+ 
+}
+
+.right {
+    background: white;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.form-control {
+    max-width: 500px;
+}
+
+.cen {
+    color:black;
+    background-color: white;
+    border-radius: 10px;
+    border: 10px solid rgba( 255, 255, 255, 0.18 );
+}

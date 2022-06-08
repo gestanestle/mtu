@@ -1,0 +1,41 @@
+{% extends "api/base.html" %}
+
+{% block content %}
+
+<title> {% block title %} MTU Login {% endblock %} </title>
+
+{% load static %}
+
+
+<div class="container" id="body">
+    <div class="row justify-content-center">
+        <div class="left col-sm-8" style="background-image: url({% static 'img/1.jpeg' %}); background-size: cover;">
+        </div>
+        <div class="right col-sm-4 pt-4 pb-4">
+            <h4 class="fw-bold" id="login-msg">LOGIN TO MTU STUDENT PORTAL</h4>
+            <p>Enter your user name and password to use the system.</p>
+                </br>
+            <form action="{% url 'signin' %}" method="POST">
+                {% csrf_token %} 
+                <div class="mb-3">
+                <label for="username" class="form-label">Student Number</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="remember-me">
+                <label class="form-check-label" for="remember-me">Remember Me</label>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+            </form>
+            <br>
+                <a href="signup/">No account yet? Register here!</a>
+            <br>
+        </div>
+    </div>        
+</div>
+
+{% endblock %}
