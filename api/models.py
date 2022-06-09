@@ -45,7 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=500, unique=True)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = "user_name"
     REQUIRED_FIELDS = ['student_no', 'email', 'password']
