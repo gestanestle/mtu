@@ -66,5 +66,10 @@
         {% comment %} <script src="script.js"></> {% endcomment %}
                 
                 <script src="" async defer></script>
+                <script>
+                    $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+                        $(".alert").alert('close');
+                    });
+                </script>
     </body>
 </html>

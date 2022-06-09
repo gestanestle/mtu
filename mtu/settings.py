@@ -91,6 +91,9 @@ DATABASES = {
 
 AUTH_USER_MODEL = 'api.User'
 
+LOGIN_URL = '/api/signin/'
+LOGOUT_REDIRECT_URL = '/'
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
