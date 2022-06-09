@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from .forms import Student, Student_Record_Form
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login, logout
 from .models import User
 from django.contrib.auth.decorators import login_required
 
@@ -15,11 +15,7 @@ def signin (request):
     if request.method == "POST":
         user_name = request.POST['user_name']
         password = request.POST['password']
-
-        print(user_name)
-        print(password)
         
-        user_model = get_user_model()
         user = authenticate(user_name=user_name, password=password)
 
         if user is not None:
@@ -54,6 +50,7 @@ def signup (request):
 def home(response):
     return render(response, 'api/home.html', )
 
-def logout(request):
+@login_required
+def signout(request):
     logout(request)
     return redirect('/')
