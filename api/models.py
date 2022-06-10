@@ -18,7 +18,7 @@ class UserManager(BaseUserManager):
     def create_user(self, student_no, user_name, email, password, **other_fields):
         if email is None:
             raise TypeError('Users must have an email address.')
-            
+ 
         user = self.model(student_no=student_no, user_name=user_name, email=self.normalize_email(email), password=password, **other_fields)
 
         user.set_password(password)
@@ -44,9 +44,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     user_name = models.CharField(max_length=20, default=student_no, unique=True)
     email = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=500, unique=True)
+    is_email_verified = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-
+    
     USERNAME_FIELD = "user_name"
     REQUIRED_FIELDS = ['student_no', 'email', 'password']
 

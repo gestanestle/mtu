@@ -9,4 +9,5 @@ urlpatterns = [
     path('home/', views.home, name="home"),
     path('signout/', views.signout, name="signout"),
     path('signin/', auth_views.LoginView.as_view(template_name='api/index.html')),
+    path('activate/<slug:uidb64>/<slug:token>/', views.activate_user, name='activate')
 ]
