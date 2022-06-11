@@ -21,8 +21,8 @@ body {
 
 #top {
     height:1.500rem;
-    background-color: rgb(65,88,208);
-    /* background-color: rgba(6,147,227,1); */
+    /* background-color: rgb(65,88,208); */
+    background-color: #024B73;
 }
 
 .navbar {
@@ -69,5 +69,5 @@ body {
     color:black;
     background-color: white;
     border-radius: 10px;
-    border: 10px solid rgba( 255, 255, 255, 0.18 );
+    border: 10px solid rgba( 255, 255, 255, 0.18 ) !important;
 }

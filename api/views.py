@@ -94,8 +94,64 @@ def signup (request):
         return render(request, 'api/signup.html',)
 
 @login_required
-def home(response):
-    return render(response, 'api/home.html', )
+def home(request):
+    user = request.user
+
+    context = {
+        'nbar':'home',
+        'user':user,
+    }
+    return render(request, 'api/account.html', context)
+
+
+@login_required
+def profile(response):
+    context = {
+        'nbar':'profile',
+    }
+    return render(response, 'api/profile.html', context)
+
+@login_required
+def display_own_grades(response):
+    context = {
+        'nbar':'display_own_grades',
+    }
+    return render(response, 'api/display_own_grades.html', context)
+
+@login_required
+def individual_evaluation_report(response):
+    context = {
+        'nbar':'individual_evaluation_report',
+    }
+    return render(response, 'api/individual_evaluation_report.html', context)
+
+@login_required
+def faculty_evaluation(response):
+    context = {
+        'nbar':'faculty_evaluation',
+    }
+    return render(response, 'api/faculty_evaluation.html', context)
+
+@login_required
+def ledger_of_accounts(response):
+    context = {
+        'nbar':'ledger_of_accounts'
+    }
+    return render(response, 'api/ledger_of_accounts.html', context)
+
+@login_required
+def transactions(response):
+    context = {
+        'nbar':'transactions'
+    }
+    return render(response, 'api/transactions.html', context)
+
+@login_required
+def apply_for_graduation(response):
+    context = {
+        'nbar':'apply_for_graduation'
+    }
+    return render(response, 'api/apply_for_graduation.html', context)
 
 @login_required
 def signout(request):

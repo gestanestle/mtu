@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html lang=>
+ {% load static %}
+    <head>
+        <!--Meta Tags-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title> Student Portal </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--CSS-->
+        <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+        <link rel="stylesheet" href="{% static 'css/styles_home.css' %}">
+
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+        
+    </head>
+    <body id="body-pd">
+      
+        <header class="header" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <div class="header_img"> <img src="{% static 'img/logo.png' %}" alt=""> </div>
+        </header>
+        <div class="l-navbar" id="nav-bar">
+            <nav class="nav">
+                <div> 
+                    <a href="{% url 'home' %}" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">STUDENT PORTAL</span> </a>
+                    <div class="nav_list"> 
+                       
+                        <li {% if nbar == 'home' %} class="nav-item active" {% endif %}>
+                            <a href="{% url 'home' %}" class="nav_link"> <i class='bx bxs-user-account nav_icon'></i> <span class="nav_name">Account</span> </a>
+                        </li>
+                        <li {% if nbar == 'profile' %} class="nav-item active" {% endif %}>
+                            <a href="{% url 'profile' %}" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Profile</span> </a>
+                        </li>
+                        <li {% if nbar == 'display_own_grades' %} class="nav-item active" {% endif %}>
+                            <a href="{% url 'display_own_grades' %}" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Display Own Grades</span> </a> 
+                        </li>
+                        <li {% if nbar == 'individual_evaluation_report' %} class="nav-item active" {% endif %}>
+                            <a href="{% url 'individual_evaluation_report' %}" class="nav_link"><i class='bx bx-file nav_icon'></i> <span class="nav_name">Individual Evaluation Report</span> </a> 
+                        </li>
+                        <li {% if nbar  == 'faculty_evaluation' %} class="nav-item active" {% endif %}>
+                            <a href="{% url 'faculty_evaluation' %}" class="nav_link"><i class='bx bx-notepad nav_icon' ></i> <span class="nav_name">Faculty Evaluation</span> </a> 
+                        </li>
+                        <li {% if nbar == 'ledger_of_accounts' %} class="nav-item active" {% endif %}>
+                            <a href="{% url 'ledger_of_accounts' %}" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Ledger of Accounts</span> </a> 
+                        </li>
+                        <li {% if nbar == 'transactions' %} class="nav-item active" {% endif %}>
+                            <a href="{% url 'transactions' %}" class="nav_link"> <i class='bx bx-wallet-alt nav_icon'></i> <span class="nav_name">Transactions</span> </a> 
+                        </li>
+                        <li {% if nbar == 'apply_for_graduation' %} class="nav-item active" {% endif %}>
+                            <a href="{% url 'apply_for_graduation' %}" class="nav_link"> <i class='bx bxs-graduation nav_icon'></i><span class="nav_name">Apply for Graduation</span> </a> 
+                        </li>
+                        
+                    </div>
+                </div> 
+                    <a href="{% url 'signout' %}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Sign Out</span> </a>
+            </nav>
+        </div>
+
+        <div class="height-100 bg-light container-body bg-success">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+  
+    <script>
+
+
+        
+    </script>
+
+        <!--Bootstrap-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    </body>
+</html>
