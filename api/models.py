@@ -1,5 +1,9 @@
+from distutils.command.upload import upload
+from email.policy import default
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+
 class Student (models.Model):
     student_no = models.CharField(primary_key=True, max_length=11)
 
@@ -44,6 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     user_name = models.CharField(max_length=20, default=student_no, unique=True)
     email = models.CharField(max_length=50, unique=True)
     password = models.CharField(max_length=500, unique=True)
+    profile_image = models.ImageField(null=True, blank=True, default="default.jpg")
     is_email_verified = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)

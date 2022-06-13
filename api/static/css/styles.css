@@ -71,3 +71,13 @@ body {
     border-radius: 10px;
     border: 10px solid rgba( 255, 255, 255, 0.18 ) !important;
 }
+
+.alert {
+    position:fixed; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9999; 
+    border-radius:0px
+
+}

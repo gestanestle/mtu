@@ -24,10 +24,18 @@
         
     </head>
     <body id="body-pd">
+
+        {% for message in messages %}
+        <div class="container-fluid p-0"> 
+        <div class="alert {{ message.tags }}" role="alert" id="alert" >
+            {{ message }}
+        </div>
+        </div>
+        {% endfor %}
       
         <header class="header" id="header">
             <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-            <div class="header_img"> <img src="{% static 'img/logo.png' %}" alt=""> </div>
+            <div class="header_img"> <img src="/static{{ user.profile_image.url }}" alt=""> </div>
         </header>
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">

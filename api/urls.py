@@ -10,6 +10,7 @@ urlpatterns = [
     path('signin/', auth_views.LoginView.as_view(template_name='api/index.html')),
     path('activate/<slug:uidb64>/<slug:token>/', views.activate_user, name='activate'),
     path('home/', views.home, name="home"),
+    path('upload_pfp/', views.upload_pfp, name="upload_pfp"),
     path('profile/', views.profile, name="profile"),
     path('display_own_grades/', views.display_own_grades, name="display_own_grades"),
     path('individual_evaluation_report/', views.individual_evaluation_report, name="individual_evaluation_report"),

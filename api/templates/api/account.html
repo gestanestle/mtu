@@ -9,17 +9,22 @@
         <div class="col-sm-4  order-sm-2 pfp-col">
             <div class="card align-items-center justify-content-center text-center h-100 w-100">
                 <div class="card-title w-100 h-100 card-pfp">
-                    <img src="{% static 'img/logo.png' %}" class="pfp" alt="...">
+                        <img src="/static{{ user.profile_image.url }}" class="pfp" alt="...">                    
                 </div>
                 <div class="card-body">
                     <div class="mb-3 p-4">
-                        <label for="formFileSm" class="form-label">Change Profile Picture</label>
-                        <input class="form-control form-control-sm" id="formFileSm" type="file">
+                        <form action="{% url 'upload_pfp' %}" enctype='multipart/form-data' method="POST">
+                            {% csrf_token %}
+                            <label for="formFileSm" class="form-label">Change Profile Picture</label>
+                            <input class="form-control form-control-sm"  type="file" name="profile_image">
+                            </br>
+                            <button class="btn btn-sm btn-outline-primary">Upload Photo</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col order-sm-1">
+        <div class="col order-sm-1 card-col">
             <div class="card h-100">
                 <div class="card-header">
                     <p class="fs-5 pt-2 fw-bold">Student No. {{user.student_no_id}}</p>
@@ -28,20 +33,21 @@
                 
                 <p class="fs-6">Email: {{user.email}}</p>
                 <p class="fs-6">Username: {{user.user_name}}</p>
-                <form>
+                <form action="{% url 'home' %}" method="POST">
+                    {% csrf_token %} 
                     <div class="mb-3">
                         <label for="current_pass" class="form-label">Current Password</label>
-                        <input type="password" class="form-control" id="current_pass">
+                        <input type="password" class="form-control" id="current_pass" name="current_pass">
                     </div>          
                     <div class="mb-3">
                         <label for="new_pass" class="form-label">New Password</label>
-                        <input type="password" class="form-control" id="new_pass">
+                        <input type="password" class="form-control" id="new_pass" name="pass_1">
                     </div>   
                     <div class="mb-3">
                         <label for="new_pass_2" class="form-label">Re-type Password</label>
-                        <input type="password" class="form-control" id="new_pass_2">
+                        <input type="password" class="form-control" id="new_pass_2" name="pass_2">
                     </div>   
-                    <button type="submit" class="btn btn-outline-info">Change Password</button>
+                    <button type="submit" class="btn btn-outline-primary">Change Password</button>
                 </form>
                 </div>
             </div>

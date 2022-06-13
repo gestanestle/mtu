@@ -51,7 +51,7 @@ a {
 .header_img {
     width: 35px;height: 35px;display: flex;justify-content: center;border-radius: 50%;overflow: hidden}
     
-.header_img img{width: 40px}
+.header_img img{width: 40px; height: 40px;}
 .l-navbar{position: fixed;top: 0;left: -30%;width: var(--nav-width);height: 100vh;background-color: var(--first-color);padding: .5rem 1rem 0 0;transition: .5s;z-index: var(--z-fixed)}
 
 .nav{height: 100%;display: flex;flex-direction: column;justify-content: space-between;overflow: hidden}
@@ -110,7 +110,8 @@ a {
     max-height: 70%;
     max-width: 70%;
     border-radius: 50%;
-    margin-top:50px;
+    margin-top:50px; 
+
     
 }
 
@@ -119,6 +120,11 @@ a {
     color: var(--white-color);
 }
 
-/* .pfp-col {
+.pfp-col {
     margin-bottom: 25px;
-} */
+}
+
+.card-col {
+    margin-bottom: 25px;
+}
+
