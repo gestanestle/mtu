@@ -7,7 +7,7 @@ class UserChangePassword(forms.Form):
         model: User
         fields = ('password')
 
-class Student_Record_Form(forms.Form):
+class Student_Record_Form(forms.ModelForm):
     class Meta:
         model = Student_Record 
         fields = "__all__"

@@ -5,37 +5,37 @@
 {% block content %}
 
 <div class="child container">
+    <div class="row"><p class="fs-5 fw-bold">STUDENT MASTER FILE MAINTENANCE</p></div>
     <div class="row">
         <div class="col order-sm-1 card-col">
             <div class="card h-100">
-                
                 <div class="card-header">
                     <p class="fs-6 fw-bold pt-2 ">Student No. {{user.student_no_id}}</p>
                     <p class="fs-6 fw-bold pt-2 ">Full name on record: {{srf.initial.last_name}}, {{srf.initial.first_name}} {{srf.initial.middle_name}}</p>
                 </div>
                 <div class="card-body">
                     <form action="{% url 'profile' %}" method="POST">
+                        {% csrf_token %}
                         <div class="mb-3">
                             <label for="last_name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last_name" name="last_name" required value={{srf.initial.last_name}}>
+                            <input type="text" class="form-control" id="last_name" name="last_name" required value="{{srf.initial.last_name}}">
                         </div>
                         <div class="mb-3">
                             <label for="first_name" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="first_name" name="first_name" required value={{srf.initial.first_name}}>
+                            <input type="text" class="form-control" id="first_name" name="first_name" required value="{{srf.initial.first_name}}">
                         </div>
                         <div class="mb-3">
                             <label for="middle_name" class="form-label">Middle Name</label>
-                            <input type="text" class="form-control" id="middle_name" name="middle_name" required value={{srf.initial.middle_name}}>
+                            <input type="text" class="form-control" id="middle_name" name="middle_name" required value="{{srf.initial.middle_name}}">
                         </div>
                         <div class="mb-3">
                             <label for="course" class="form-label">Course</label>
-                            <input type="text" class="form-control" id="course" name="course" readonly value={{srf.initial.course}}>
+                            <input type="text" class="form-control" id="course" name="course" readonly value="{{srf.initial.course}}">
                         </div>
                         <div class="mb-3">
                             <label for="year_level" class="form-label">Year Level</label>
                             <select class="form-select form-control" id="year_level" name="year_level" readonly >
-                                <option selected value=>Year Level</option>
-                                <option value="1">1</option>
+                                <option selected value="1">{{srf.initial.year_level}}</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
@@ -44,11 +44,11 @@
                         </div>
                         <div class="mb-3">
                                 <label for="current_SY" class="form-label">School Year</label>
-                                <input type="text" id="current_SY" class="form-control" readonly value={{srf.initial.current_SY}} >
+                                <input type="text" id="current_SY" class="form-control" name="current_SY" readonly value="{{srf.initial.current_SY}}" >
                         </div>
                         <div class="mb-3">
                             <label for="current_sem" class="form-label">Semester</label>
-                            <input type="text" class="form-control" id="current_sem" name="current_sem" readonly value={{srf.initial.current_sem}}>
+                            <input type="text" class="form-control" id="current_sem" name="current_sem" readonly value="{{srf.initial.current_sem}}">
                         </div>
                         <button type="submit" class="btn btn-outline-primary">Submit</button>
                     </form>

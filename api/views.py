@@ -1,8 +1,6 @@
-from audioop import reverse
 from email import message
 from email.policy import default
 from multiprocessing.dummy import current_process
-from urllib import request
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -23,8 +21,12 @@ from django.urls import reverse
 from django.forms.models import model_to_dict
 
 
-def index (response):
-    return render (response, 'api/index.html',)
+def index (request):
+    
+    if request.user.is_authenticated:
+        return redirect('/home')
+    else:
+        return render (request, 'api/index.html',)
 
 def signin (request):
     if request.method == "POST":
@@ -94,6 +96,7 @@ def signup (request):
     else:
         return render(request, 'api/signup.html',)
 
+@login_required
 def home(request):
     user = request.user
     image_form = Upload_Image()
@@ -127,74 +130,81 @@ def home(request):
 
     return render(request, 'api/account.html', context)
 
-
+@login_required
 def profile(request):
     user = request.user
-    
-    if request.method == "POST":
-        return
-        
     record = Student_Record.objects.get(student_no=user.student_no_id)
-    srf = Student_Record_Form(initial=model_to_dict(record))
+    srf = Student_Record_Form(request.POST or None, instance=record,initial=model_to_dict(record))
 
-    context = {
-        'nbar':'profile',
-        'user':user,
-        'srf':srf,
-    }
+    if request.method == "POST":
+        if srf.is_valid():
+            srf.save()
+            messages.success(request, "Profile successfully updated.")
+            
+        else:
+            messages.error(request, "Error occured.")
+        return redirect('profile')
 
-    return render(request, 'api/profile.html', context)
+    else:
+        context = {
+            'nbar':'profile',
+            'user':user,
+            'srf':srf,
+        }
+        return render(request, 'api/profile.html', context)
 
+@login_required
 def display_own_grades(response):
     context = {
         'nbar':'display_own_grades',
     }
     return render(response, 'api/display_own_grades.html', context)
 
+@login_required
 def individual_evaluation_report(response):
     context = {
         'nbar':'individual_evaluation_report',
     }
     return render(response, 'api/individual_evaluation_report.html', context)
 
+@login_required
 def faculty_evaluation(response):
     context = {
         'nbar':'faculty_evaluation',
     }
     return render(response, 'api/faculty_evaluation.html', context)
 
+@login_required
 def ledger_of_accounts(response):
     context = {
         'nbar':'ledger_of_accounts'
     }
     return render(response, 'api/ledger_of_accounts.html', context)
 
+@login_required
 def transactions(response):
     context = {
         'nbar':'transactions'
     }
     return render(response, 'api/transactions.html', context)
 
+@login_required
 def apply_for_graduation(response):
     context = {
         'nbar':'apply_for_graduation'
     }
     return render(response, 'api/apply_for_graduation.html', context)
 
-
+@login_required
 def signout(request):
     logout(request)
     return redirect('/')
 
-
+@login_required
 def upload_pfp(request):
     if request.method == "POST":
         user = request.user
-        # profile_image = request.POST.get('profile_image', 'default.jpg')
-        # profile_image = request.POST.get('profile')
         modify_user = User.objects.get(student_no=user.student_no_id)
-        # updated_request = request.POST.copy()
-        # updated_request.update({'student_no': user.student_no_id})
         form = Upload_Image(request.POST, request.FILES ,instance=modify_user)
 
         if form.is_valid():
@@ -205,3 +215,8 @@ def upload_pfp(request):
             messages.error(request, "Invalid file format.")
 
     return redirect('/home')
+
+def error_404(request, exception):
+    return render(request, 'api/500.html',)
+def error_500(request):
+    return render(request, 'api/500.html',)

@@ -1,0 +1,22 @@
+{% extends "api/base.html" %}
+
+{% block content %}
+
+<title> {% block title %} 404 Not Found {% endblock %} </title>
+
+{% load static %}
+
+<div class="container" style="height:">
+    <div class="row justify-content-center align-items-center h-100 align-middle">
+        <div class="col-lg-6 text-center">
+            <img src="{% static 'img/sad-face.png' %}" class="img"> </img>
+            <h1 class="txt">404</h1> <br>
+            <h2 class="txt">Page Not Found!</h2>
+            <br>
+            <p class="txt-2">The page that you're looking for doesn't exist. </p>
+            <a href="{% url 'index' %}"> Click here to go back.</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
