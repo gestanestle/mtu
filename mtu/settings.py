@@ -82,11 +82,12 @@ WSGI_APPLICATION = 'mtu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_mtu',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'iamnestle',
-        'HOST': 'localhost',
+        'PASSWORD': 'Iamnestle10',
+        'HOST': 'mtu-server.postgres.database.azure.com',
         'PORT': '5432',
+        "OPTIONS":{"sslmode":"require"},
 
     }
 }
