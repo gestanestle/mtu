@@ -53,6 +53,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS=['https://mtu.azurewebsites.net']
+
 ROOT_URLCONF = 'mtu.urls'
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'api/templates')
